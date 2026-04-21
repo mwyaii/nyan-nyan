@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nyan Nyan</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥬</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: #ccffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #001f1f,
+    #003333,
+    #004d4d,
+    #002626
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* сетка */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 30s linear infinite;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 120px 120px; }
+}
+
+/* контейнер */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 300px;
+}
+
+/* блок */
+.block {
+  text-align: center;
+}
+
+/* подписи */
+.title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* полоски */
+.strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #40e0d0, #00ffff);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.5);
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.strip:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 25px #00ffff;
+}
+
+/* shine */
+.strip::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition: 0.5s;
+}
+
+.strip:hover::after {
+  left: 100%;
+}
+
+.click {
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="block">
+    <div class="title">osu! profile</div>
+    <a href="https://osu.ppy.sh/users/38060703" target="_blank" class="strip">
+      <div class="click">click!</div>
+    </a>
+  </div>
+
+  <div class="block">
+    <div class="title">discord server</div>
+    <a href="https://discord.gg/tnkk83sr" target="_blank" class="strip">
+      <div class="click">click!</div>
+    </a>
+  </div>
+
+  <div class="block">
+    <div class="title">telegram channel</div>
+    <!-- вставь сюда свою ссылку -->
+    <a href="https://t.me/coconutOSU" target="_blank" class="strip">
+      <div class="click">click!</div>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
