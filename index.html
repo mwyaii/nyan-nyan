@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nyan Nyan</title>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥬</text></svg>">
@@ -30,22 +31,24 @@ body {
   animation: gradientMove 15s ease infinite;
 }
 
+/* градиент */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* сетка */
-body::before {
-  content: "";
+/* СЕТКА (исправлено) */
+.grid {
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
-  animation: gridMove 30s linear infinite;
+  animation: gridMove 40s linear infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes gridMove {
@@ -55,6 +58,8 @@ body::before {
 
 /* контейнер */
 .container {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -70,7 +75,9 @@ body::before {
 .title {
   margin-bottom: 10px;
   font-size: 16px;
-  opacity: 0.8;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(0,255,255,0.4);
 }
 
 /* полоски */
@@ -115,10 +122,19 @@ body::before {
 .click {
   font-size: 18px;
 }
+
+/* адаптация */
+@media (max-width: 500px) {
+  .container {
+    width: 90%;
+  }
+}
 </style>
 </head>
 
 <body>
+
+<div class="grid"></div>
 
 <div class="container">
 
@@ -138,7 +154,6 @@ body::before {
 
   <div class="block">
     <div class="title">telegram channel</div>
-    <!-- вставь сюда свою ссылку -->
     <a href="https://t.me/coconutOSU" target="_blank" class="strip">
       <div class="click">click!</div>
     </a>
@@ -148,4 +163,3 @@ body::before {
 
 </body>
 </html>
-<!-- update -->
